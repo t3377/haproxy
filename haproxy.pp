@@ -97,5 +97,15 @@ class { 'haproxy':
     ],
     'maxconn' => '8000',
   },
+  haproxy::listen { 'galera':
+  ipaddress => $::10.13.1.36,10.13.1.34,10.13.1.35,10.13.1.33,
+  ports     => '18140',
+  mode      => 'tcp',
+  options   => {
+    'option'  => [
+      'tcplog',
+    ],
+    'balance' => 'roundrobin',
+  },
 }
    
